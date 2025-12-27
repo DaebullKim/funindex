@@ -1,0 +1,765 @@
+{
+  "analysis_metadata": {
+    "target": "STEAM",
+    "total_reviews": 29834,
+    "num_segments": 8,
+    "analysis_date": "2025-12-25",
+    "postprocess_version": "v14.1",
+    "postprocess_datetime": "2025-12-25 13:41:28",
+    "priority_scoring": {
+      "impact_top": [
+        0,
+        7,
+        3,
+        6
+      ],
+      "urgency_top": [
+        3,
+        1,
+        6,
+        2
+      ],
+      "scores": [
+        {
+          "segment_id": 0,
+          "impact_score": 0.9,
+          "urgency_score": 0.39,
+          "ratio": 0.691
+        },
+        {
+          "segment_id": 1,
+          "impact_score": 0.309,
+          "urgency_score": 0.5278,
+          "ratio": 0.049
+        },
+        {
+          "segment_id": 2,
+          "impact_score": 0.2249,
+          "urgency_score": 0.4352,
+          "ratio": 0.069
+        },
+        {
+          "segment_id": 3,
+          "impact_score": 0.3787,
+          "urgency_score": 0.5836,
+          "ratio": 0.036000000000000004
+        },
+        {
+          "segment_id": 4,
+          "impact_score": 0.3042,
+          "urgency_score": 0.4249,
+          "ratio": 0.043
+        },
+        {
+          "segment_id": 5,
+          "impact_score": 0.1045,
+          "urgency_score": 0.2911,
+          "ratio": 0.081
+        },
+        {
+          "segment_id": 6,
+          "impact_score": 0.3588,
+          "urgency_score": 0.473,
+          "ratio": 0.011000000000000001
+        },
+        {
+          "segment_id": 7,
+          "impact_score": 0.4667,
+          "urgency_score": 0.2816,
+          "ratio": 0.021
+        }
+      ]
+    }
+  },
+  "segments": [
+    {
+      "segment_id": 0,
+      "segment_size": 20622,
+      "segment_ratio": "69.1%",
+      "persona_profile": {
+        "persona_name": "휴면 구매자(재방문 후보)",
+        "one_liner": "게임을 추천할 만큼 즐겼으나, 현재는 활동이 없는 대규모 휴면 유저층으로 복귀 잠재력이 높습니다.",
+        "description": "이 유저들은 전체 플레이어의 대다수를 차지하며, 게임에 대한 초기 만족도가 매우 높아 다른 사람에게 추천할 의사까지 보였습니다. 평균 45시간의 플레이 시간을 기록하며 게임을 충분히 즐겼지만, 최근 2주간 활동이 전혀 없어 현재는 게임을 떠난 상태입니다. 강한 부정적 감정보다는 흥미 감소나 다른 게임으로의 이동 등 점진적인 이유로 이탈했을 가능성이 큽니다. 이들은 게임에 대한 긍정적인 기억을 가지고 있어, 적절한 자극이 있다면 복귀할 가능성이 높은 중요한 잠재 고객입니다.",
+        "key_characteristics": [
+          "전체 유저 중 가장 큰 비중을 차지하는 핵심 세그먼트",
+          "초기 게임 플레이에 대한 만족도가 높고 추천 의사가 강함",
+          "최근 2주간 플레이 시간이 0으로, 현재는 게임 활동이 없음",
+          "총 플레이 시간은 45시간으로, 게임을 충분히 경험한 이력이 있음",
+          "게임 커뮤니티 참여나 문화적 몰입도는 낮은 편",
+          "강한 불만보다는 흥미 감소로 인한 점진적 이탈 경향"
+        ],
+        "needs": [
+          "초보자 보호 및 게임 진입 장벽 완화",
+          "스트레스 없이 게임의 핵심 재미를 즐길 수 있는 환경",
+          "게임 이탈을 방지하고 꾸준히 플레이할 동기 부여"
+        ],
+        "pain_points": [
+          "다른 플레이어에게 사냥당하는 경험으로 인한 초반 좌절감",
+          "게임 진행의 어려움과 무엇을 해야 할지 모르는 막막함",
+          "낮은 최근 활동량으로 미루어 보아, 게임 이탈 가능성이 높음"
+        ],
+        "target_priority": "높음",
+        "retention_risk": "매우 높음",
+        "monetization_potential": "중간",
+        "recommended_actions": [
+          "전용 서버 또는 모드 도입을 검토하여 를 원치 않는 유저에게 대안 제공 개발팀",
+          "초보자 보호 시스템 강화 예 일정 레벨시간 동안 면역 안전 구역 확대 튜토리얼 개선 개발팀",
+          "신규/복귀 유저를 위한 온보딩 프로그램 및 가이드 콘텐츠를 강화하여 게임 적응 지원 (운영팀)",
+          "중심의 신규 콘텐츠 업데이트 및 이벤트를 기획하여 다양한 플레이 경험 제공 개발운영팀",
+          "이탈 유저 대상 설문조사를 통해 이탈 원인을 심층 분석하고 개선 방안 마련 (운영팀)",
+          "낮은 최근 활동 유저를 대상으로 콘텐츠 업데이트 알림 초보자 가이드 제공 등 리텐션 캠페인 진행 운영팀"
+        ],
+        "evidence_refs": [
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "n",
+            "value": "20622",
+            "segment_id": 0
+          },
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "playtime_last_two_weeks",
+            "value": "0.0",
+            "segment_id": 0
+          },
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "recent_activity",
+            "value": "0.0035165593401595",
+            "segment_id": 0
+          },
+          {
+            "evidence_type": "quote",
+            "source": "STEAM_representative_reviews.json",
+            "value": "npc랑만 싸울수 있게도 만들면 좋겠어요... 초보자는 플레이어 만나면 그냥 사냥당해서 뭘 할수가 없네요 슬프게도 ㅜ",
+            "segment_id": 0
+          },
+          {
+            "evidence_type": "chart",
+            "source": "STEAM_selected_images.txt",
+            "chart_name": "12_topdiff_mirror_segment_0.png",
+            "segment_id": 0
+          }
+        ]
+      }
+    },
+    {
+      "segment_id": 1,
+      "segment_size": 1459,
+      "segment_ratio": "4.9%",
+      "persona_profile": {
+        "persona_name": "장기 몰입형 휴식자",
+        "one_liner": "게임을 즐겁게 플레이했지만, 현재는 활동이 뜸한 잠재적 복귀 유저.",
+        "description": "이 유저들은 게임에 상당한 시간을 투자했으며, 초기에는 매우 긍정적인 경험을 하고 높은 추천 의향을 보였습니다. 게임 플레이 중 강한 감정적 반응을 보였던 것으로 미루어 보아, 핵심 콘텐츠에서 큰 만족감을 얻었을 가능성이 높습니다. 하지만 최근 2주간의 플레이타임과 활동량이 급격히 감소하여, 현재는 게임에서 멀어진 휴면 상태에 있습니다. 이들은 게임의 커뮤니티 활동이나 심층적인 게임 문화에는 크게 몰입하지 않는 경향을 보이며, 주로 핵심 게임 플레이 자체에 집중했습니다. 과거의 긍정적인 경험을 바탕으로 재활성화될 잠재력이 높은 중요한 세그먼트입니다.",
+        "key_characteristics": [
+          "높은 추천 의향과 긍정적 초기 경험",
+          "상당한 누적 플레이타임 보유",
+          "최근 활동량 및 플레이타임 매우 낮음",
+          "커뮤니티 및 게임 문화 몰입도 낮음",
+          "강한 감정적 반응을 보였던 잠재적 복귀 유저"
+        ],
+        "needs": [
+          "새로운 고품질 콘텐츠 확장팩를 통해 게임에 다시 몰입할 동기 부여",
+          "기존 플레이 경험을 뛰어넘는 최적화된 플레이 환경 (예: PC 버전의 쾌적함)",
+          "오랜 기간 즐길 수 있는 깊이 있는 콘텐츠와 도전 과제",
+          "게임의 수명 연장을 위한 지속적인 업데이트 및 개선"
+        ],
+        "pain_points": [
+          "기존 콘텐츠 소진으로 인한 플레이 동기 저하 및 휴면 상태",
+          "다른 플랫폼에서 이미 모든 것을 경험하여 새로운 자극 부족",
+          "새로운 콘텐츠 부재 시 재접속 및 활동 유지의 어려움"
+        ],
+        "target_priority": "중간",
+        "retention_risk": "높음",
+        "monetization_potential": "중간",
+        "recommended_actions": [
+          "고품질의 유료 또는 대규모 무료 업데이트를 주기적으로 출시하여 기존 유저들의 재유입을 유도하고 플레이 시간을 증대시킵니다",
+          "PC 버전의 쾌적함을 유지하고, 가능하다면 크로스 세이브 또는 계정 연동 기능을 강화하여 다중 플랫폼 유저의 편의성을 높입니다",
+          "이미 게임을 마스터한 유저들을 위한 고난이도 도전 모드, 랭킹 시스템, 특별 보상 등을 도입하여 장기적인 목표를 제공합니다",
+          "오랜만에 접속하는 유저들을 위한 특별 보상이나 한정 이벤트를 통해 복귀를 장려하고, 새로운 콘텐츠를 경험하게 합니다",
+          "다음 콘텐츠 개발 시 이들의 높은 충성도를 활용하여 피드백을 적극적으로 수렴하고, 개발 로드맵을 공유하여 기대감을 유지시킵니다"
+        ],
+        "evidence_refs": [
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "recommended",
+            "value": "0.8718300205620287",
+            "segment_id": 1
+          },
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "playtime",
+            "value": "79.88333333333334",
+            "segment_id": 1
+          },
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "playtime_last_two_weeks",
+            "value": "1.9",
+            "segment_id": 1
+          },
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "sentiment_score",
+            "value": "0.3574366004112406",
+            "segment_id": 1
+          },
+          {
+            "evidence_type": "quote",
+            "source": "STEAM_representative_reviews.json",
+            "value": "플스로 이미 플래티넘이나 모든 보상과 수집품 클리어 했지만, 그래도 이번에 DLC까지 나온김에 PC로 쾌적하게 플레이하고 싶어서 구입함. 후회는 없음. 오히려 더 즐길게 남아있어서 천천히 즐기고 싶을 지경. 여전히 재밌고 훌륭함.",
+            "segment_id": 1
+          },
+          {
+            "evidence_type": "chart",
+            "source": "STEAM_selected_images.txt",
+            "chart_name": "12_topdiff_mirror_segment_1.png",
+            "segment_id": 1
+          }
+        ]
+      }
+    },
+    {
+      "segment_id": 2,
+      "segment_size": 2047,
+      "segment_ratio": "6.9%",
+      "persona_profile": {
+        "persona_name": "조용한 꾸준 플레이어",
+        "one_liner": "게임을 꾸준히 즐기며 만족하지만, 커뮤니티 활동이나 추가 지출에는 소극적인 조용한 유저.",
+        "description": "이들은 게임의 핵심 재미를 꾸준히 즐기며 높은 만족도를 보이는 유저 그룹입니다. 게임을 주변에 추천할 의향은 높지만, 커뮤니티 활동, 게임 관련 토론 참여, 추가 콘텐츠 구매 등에는 매우 소극적인 경향을 보입니다. 게임에 대한 감정적 몰입도는 중간 수준이며, 게임 플레이 자체에 집중하는 '조용한 즐겜러' 유형입니다. 이들은 게임의 안정적인 플레이어 기반을 형성하지만, 바이럴 확산이나 추가 수익 창출에는 기여도가 낮습니다.",
+        "key_characteristics": [
+          "높은 추천 의향을 가짐",
+          "꾸준한 플레이 시간을 유지함",
+          "낮은 커뮤니티/문화 콘텐츠 참여도",
+          "추가 콘텐츠 구매에 소극적임",
+          "낮은 바이럴 확산 및 영향력",
+          "중간 수준의 감정적 몰입도"
+        ],
+        "needs": [
+          "공정하고 일관성 있는 게임 플레이 경험",
+          "반복적이지 않고 몰입감 있는 콘텐츠 다양성",
+          "개발팀의 지속적인 개선 노력과 소통",
+          "밸런스 조정 및 버그 수정"
+        ],
+        "pain_points": [
+          "불공정한 난이도 스파이크 및 밸런스 문제 (예: 과도한 디버프, 불합리한 데미지)",
+          "반복적인 맵/몹 에셋 재활용 및 콘텐츠 부족으로 인한 지루함",
+          "게임 시스템(예: 브레이크 시스템)의 불완전성 또는 의도치 않은 작동",
+          "개발 과정에서의 성의 부족 또는 테스트 미흡에 대한 불신"
+        ],
+        "target_priority": "중간",
+        "retention_risk": "중간",
+        "monetization_potential": "낮음",
+        "recommended_actions": [
+          "핵심 전투 시스템(데미지, 디버프, 브레이크)에 대한 전면적인 밸런스 패치 진행",
+          "신규 맵, 몬스터, 또는 게임 모드 추가를 통해 콘텐츠 다양성 확보 및 반복 플레이 개선",
+          "에셋 재활용 방식 재검토 및 새로운 비주얼/게임 플레이 요소 도입으로 신선함 제공",
+          "주요 밸런스 및 콘텐츠 업데이트 전 해당 세그먼트 유저들을 대상으로 한 비공개 테스트 진행",
+          "개발 로드맵 및 밸런스 조정 계획에 대한 투명한 소통 채널 마련 및 정기적인 개발자 노트 발행"
+        ],
+        "evidence_refs": [
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "recommended",
+            "value": "0.7708842208109429",
+            "segment_id": 2
+          },
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "playtime",
+            "value": "224.2",
+            "segment_id": 2
+          },
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "emotion_intensity",
+            "value": "4.001465559355154",
+            "segment_id": 2
+          },
+          {
+            "evidence_type": "quote",
+            "source": "STEAM_representative_reviews.json",
+            "value": "겜 만들때 400억 직원끼리 뒤로 해먹었나봄 쓰레기게임 개발과정에서 에셋 조합해서 만든거는 괜찮음 노동을 줄였으면 다른거에서도 정성이 느껴져야하는데 이 쓰레기게임은 맵이랑 몹 에셋 복붙하고 수백번 뺑이치게함 ㅇㅇ 누가쳐하노 시발",
+            "segment_id": 2
+          },
+          {
+            "evidence_type": "quote",
+            "source": "STEAM_representative_reviews.json",
+            "value": "파불코 `연출`이라면서 캐릭 셋 거뜬히 리타이어 시킬 데미지 나오는게 맞는지 모르겠고, 게임을 해보고 내는것이 맞는지 의문이다 7장까지는 적절히 멋지게 만들더니만,7.5장때부터 공략이 3스잡히고 기도한뒤 앞면나오길 기도하기 일때부터 이상하다 싶었고,기어이 8장에서는 아예 브레이크를 내다 버리고 온것 같다. 내가 합 잘 이기고 100뎀 넣게 후들겨 맞는것이 의도된 사항인지...내가 합을 이겼는데 캐릭들에게 디버프 떡칠돠서",
+            "segment_id": 2
+          },
+          {
+            "evidence_type": "chart",
+            "source": "STEAM_selected_images.txt",
+            "chart_name": "12_topdiff_mirror_segment_2.png",
+            "segment_id": 2
+          },
+          {
+            "evidence_type": "chart",
+            "source": "STEAM_selected_images.txt",
+            "chart_name": "07_radar_single.png",
+            "segment_id": 2
+          }
+        ]
+      }
+    },
+    {
+      "segment_id": 3,
+      "segment_size": 1076,
+      "segment_ratio": "3.6%",
+      "persona_profile": {
+        "persona_name": "하드코어 몰입형 분석가",
+        "one_liner": "게임의 깊은 재미를 알지만, 개선점을 날카롭게 지적하는 베테랑 플레이어.",
+        "description": "이들은 게임에 상당한 시간을 투자하여 깊이 몰입하고 게임의 핵심 재미를 잘 이해하고 있습니다. 높은 플레이타임과 추천 의사를 보이지만, 동시에 낮은 감성 점수와 높은 감정 강도를 보여 게임에 대한 애정과 함께 개선이 필요한 부분에 대해 강한 불만이나 비판적인 시각을 가지고 있습니다. 게임의 문화나 커뮤니티 활동에는 크게 참여하지 않으며, 주로 게임 플레이 자체에 집중합니다. 이들은 게임의 잠재력을 믿지만, 현재의 문제점에 대해 목소리를 내는 '쓴소리'를 아끼지 않는 유형입니다.",
+        "key_characteristics": [
+          "높은 플레이타임과 게임 핵심 재미 이해",
+          "게임에 대한 강한 애정과 함께 날카로운 비판 의식",
+          "커뮤니티 활동보다는 순수 게임 플레이에 집중",
+          "낮은 감성 점수에도 불구하고 높은 감정 강도를 보임",
+          "게임의 잠재력을 믿으며 개선을 강력히 요구"
+        ],
+        "needs": [
+          "게임 밸런스 및 핵심 시스템에 대한 개발팀의 깊은 이해와 일관된 관리",
+          "패치 및 업데이트 내용에 대한 명확하고 논리적인 설명과 소통",
+          "자신들의 심층적인 피드백이 게임 개선에 반영되는 경험"
+        ],
+        "pain_points": [
+          "개발팀이 게임의 복잡한 시스템과 밸런스를 제대로 이해하지 못한다고 느낌",
+          "패치 적용 방식이나 수치 조정이 비합리적이거나 무의미하다고 판단",
+          "오랜 시간 투자한 게임에 대한 애정이 실망감으로 변질되는 경험"
+        ],
+        "target_priority": "높음",
+        "retention_risk": "높음",
+        "monetization_potential": "중간",
+        "recommended_actions": [
+          "핵심 시스템 및 밸런스 변경 시, 내부 테스트 및 데이터 분석을 강화하고 상세한 개발자 노트를 통해 변경 의도와 예상 효과를 투명하게 공개",
+          "고숙련 유저들을 위한 '밸런스 자문단' 또는 '테스터 그룹'을 운영하여 심층적인 피드백을 정기적으로 수렴하고 개발 과정에 반영",
+          "게임 내 통계 및 밸런스 관련 데이터를 주기적으로 공개하여 유저들이 개발팀의 노력을 이해하고 신뢰할 수 있도록 유도",
+          "유저들이 제기하는 복잡한 시스템 관련 버그나 비효율적인 요소에 대해 우선순위를 높여 개선하고, 개선 과정을 적극적으로 소통"
+        ],
+        "evidence_refs": [
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "recommended",
+            "value": "0.7862453531598513",
+            "segment_id": 3
+          },
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "playtime",
+            "value": "247.09166666666664",
+            "segment_id": 3
+          },
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "sentiment_score",
+            "value": "0.2105018587360594",
+            "segment_id": 3
+          },
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "emotion_intensity",
+            "value": "3.8215613382899623",
+            "segment_id": 3
+          },
+          {
+            "evidence_type": "quote",
+            "source": "STEAM_representative_reviews.json",
+            "value": "일단 요약은 지도박이들의 퍼거 게임이자 요한의 퍼거력을 상징하는 게임임 11.29)인줄 알았으나 패치하면서 밸런스를 잡는 꼬라지 보아하니 지들이 만든 계산식에 무슨 문제가 있는지 어떻게 적용되고 있는지 하나도 몰라보이는거 존나 개 짜침. 하면서도 종종 보이는 수치 증감량을 볼 때 고작 이거 증감해서 뭐에 쓴다고??? 하던 것들 대부분 결국 지들도 계산식 몰라서 적용을 10배 나 10분의 1 처럼 병신같이 적용",
+            "segment_id": 3
+          },
+          {
+            "evidence_type": "chart",
+            "source": "STEAM_selected_images.txt",
+            "chart_name": "07_radar_single.png",
+            "segment_id": 3
+          },
+          {
+            "evidence_type": "chart",
+            "source": "STEAM_selected_images.txt",
+            "chart_name": "12_topdiff_mirror_segment_3.png",
+            "segment_id": 3
+          }
+        ]
+      }
+    },
+    {
+      "segment_id": 4,
+      "segment_size": 1291,
+      "segment_ratio": "4.3%",
+      "persona_profile": {
+        "persona_name": "간헐적 만족 플레이어",
+        "one_liner": "한때 게임에 깊이 몰입했으나, 현재는 활동이 뜸한 잠재적 복귀 유저.",
+        "description": "이들은 과거 게임에 상당한 시간을 투자하며 높은 만족도를 보였던 유저들입니다. 총 플레이타임은 길지만, 최근 2주간의 플레이타임과 활동량이 현저히 줄어든 상태입니다. 게임을 긍정적으로 추천했던 경험이 있으나, 현재는 커뮤니티 활동이나 게임 내 영향력이 낮습니다. 게임에 대한 애정은 남아있을 수 있으나, 새로운 콘텐츠 부재나 흥미 감소로 인해 잠시 떠나있는 상태로 보입니다.",
+        "key_characteristics": [
+          "높은 총 플레이타임 기록",
+          "과거 게임 추천 의향이 높았음",
+          "최근 활동량 및 플레이타임 급감",
+          "커뮤니티 참여 및 영향력 미미",
+          "낮은 게임 내 문화/커뮤니티 점수",
+          "잠재적 복귀 가능성 보유"
+        ],
+        "needs": [
+          "지속적인 고품질 콘텐츠 업데이트 및 확장 (스토리, 캐릭터, 시스템 등)",
+          "게임의 핵심 가치와 정체성 유지 및 강화",
+          "개발팀과의 적극적인 소통 및 피드백 반영",
+          "자신들의 충성심에 대한 인정과 특별한 보상"
+        ],
+        "pain_points": [
+          "콘텐츠 업데이트 지연 또는 품질 저하",
+          "게임의 핵심 재미를 해치는 변경사항이나 버그",
+          "개발팀과의 소통 부재 또는 피드백 무시",
+          "장기 플레이어에 대한 차별화된 경험 부족"
+        ],
+        "target_priority": "중간",
+        "retention_risk": "중간",
+        "monetization_potential": "중간",
+        "recommended_actions": [
+          "핵심 팬층이 열광할 만한 깊이 있는 스토리 콘텐츠, 신규 캐릭터, 도전적인 난이도의 엔드게임 콘텐츠를 주기적으로 업데이트하여 몰입감을 유지합니다",
+          "개발자 노트, Q&A 세션, 팬아트 공모전 등 팬들과 직접 소통할 수 있는 채널을 활성화하고, 이들의 피드백을 경청하며 게임 개선에 반영하는 모습을 적극적으로 보여줍니다",
+          "장기 플레이어들을 위한 특별한 인게임 보상(코스튬, 칭호, 재화 등)이나 오프라인 이벤트 참여 기회를 제공하여 충성도를 더욱 강화하는 로열티 프로그램을 기획합니다",
+          "업데이트 시 발생할 수 있는 버그나 성능 문제를 최소화하기 위해 QA 프로세스를 강화하고, 문제가 발생하면 신속하게 대응하여 게임에 대한 신뢰를 유지합니다",
+          "이 세그먼트의 인게임 플레이 데이터(선호하는 콘텐츠, 플레이 패턴 등)를 심층 분석하여 다음 콘텐츠 개발 방향에 적극적으로 활용합니다"
+        ],
+        "evidence_refs": [
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "recommended",
+            "value": "0.833",
+            "segment_id": 4
+          },
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "playtime",
+            "value": "159.6",
+            "segment_id": 4
+          },
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "emotion_intensity",
+            "value": "3.842",
+            "segment_id": 4
+          },
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "play_intensity",
+            "value": "0.560",
+            "segment_id": 4
+          },
+          {
+            "evidence_type": "quote",
+            "source": "STEAM_representative_reviews.json",
+            "value": "세상에 70억명의 림버스 팬이 있다면, 나는 그들 중 한명일 것이다. 세상에 1억명의 림버스 팬이 있다면, 나 또한 그들 중 한명일 것이다. 세상에 천 만명의 림버스팬이 있다면, 나는 여전히 그들 중 한명일 것이다. 세상에 백 명의 림버스 팬이 있다면, 나는 아직도 그들 중 한명일 것이다. 세상에 한 명의 림버스 팬이 있다면, 그 사람은 아마도 나일 것이다.",
+            "segment_id": 4
+          },
+          {
+            "evidence_type": "chart",
+            "source": "STEAM_selected_images.txt",
+            "chart_name": "07_radar_single.png",
+            "segment_id": 4
+          },
+          {
+            "evidence_type": "chart",
+            "source": "STEAM_selected_images.txt",
+            "chart_name": "12_topdiff_mirror_segment_4.png",
+            "segment_id": 4
+          }
+        ]
+      }
+    },
+    {
+      "segment_id": 5,
+      "segment_size": 2413,
+      "segment_ratio": "8.1%",
+      "persona_profile": {
+        "persona_name": "구매 후 실망 이탈후보(부정 확산형)",
+        "one_liner": "게임에 대한 실망감으로 플레이를 중단했으며, 강한 부정적 감정을 가진 이탈 유저입니다.",
+        "description": "이 세그먼트는 최근 플레이 시간이 전무하고 활동이 매우 낮은, 게임 플레이를 완전히 중단한 유저들입니다. 과거에 37.1시간이라는 적지 않은 플레이 시간을 투자했음에도 불구하고, 현재는 높은 감정 강도의 부정적인 감정을 가지고 있습니다. 이는 게임 플레이 중 상당한 좌절감이나 실망감을 경험하여 이탈했음을 시사합니다. 이들은 게임을 적극적으로 추천하지 않으며, 게임의 문화나 커뮤니티에 대한 참여도도 낮습니다. 과거에는 어느 정도 영향력이 있었을 수 있으나, 현재는 완전히 이탈한 상태입니다.",
+        "key_characteristics": [
+          "최근 2주간 플레이 시간 전무 (0.0시간)",
+          "높은 감정 강도의 부정적 감성 보유",
+          "총 플레이 시간 37.1시간으로 과거 플레이 경험 있음",
+          "게임 문화 및 커뮤니티 참여도 낮음",
+          "게임 이탈의 주 원인으로 부정적 경험 추정"
+        ],
+        "needs": [
+          "독특한 내러티브와 캐릭터 상호작용을 통한 몰입감 있는 경험",
+          "선택과 결과가 명확하고 공정하게 느껴지는 시스템",
+          "초기 플레이 이후에도 지속적인 흥미를 유발하는 콘텐츠 업데이트"
+        ],
+        "pain_points": [
+          "높은 초기 플레이타임 대비 현저히 낮은 최근 활동률 및 이탈",
+          "엄격하거나 불명확한 카르마 시스템에 대한 불만",
+          "사소한 행동에 대한 과도한 부정적 카르마 축적에 대한 좌절"
+        ],
+        "target_priority": "낮음",
+        "retention_risk": "매우 높음",
+        "monetization_potential": "매우 낮음",
+        "recommended_actions": [
+          "카르마 시스템의 밸런스를 재조정하고, 특히 사소한 행동에 대한 영향도를 완화하여 플레이어의 불만을 해소합니다",
+          "카르마 획득/상실 조건 및 그 결과를 게임 내에서 명확히 인지할 수 있도록 UI/UX를 개선합니다",
+          "이탈 유저 복귀를 위한 새로운 스토리라인, 캐릭터 이벤트, 또는 도전 과제 등 재참여 콘텐츠를 개발합니다",
+          "긍정적 평가를 받은 독특한 캐릭터 상호작용 및 유머 요소를 활용한 확장 콘텐츠를 기획 및 개발합니다"
+        ],
+        "evidence_refs": [
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "playtime_last_two_weeks",
+            "value": "0.0",
+            "segment_id": 5
+          },
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "sentiment_score",
+            "value": "-0.1156",
+            "segment_id": 5
+          },
+          {
+            "evidence_type": "quote",
+            "source": "STEAM_representative_reviews.json",
+            "value": "재밌어요 그런데 남들 몰래 방귀 뀌는 것도 나쁜 카르마 쌓인다는 건 너무해요",
+            "segment_id": 5
+          },
+          {
+            "evidence_type": "chart",
+            "source": "STEAM_selected_images.txt",
+            "chart_name": "12_topdiff_mirror_segment_5.png",
+            "segment_id": 5
+          }
+        ]
+      }
+    },
+    {
+      "segment_id": 6,
+      "segment_size": 314,
+      "segment_ratio": "1.1%",
+      "persona_profile": {
+        "persona_name": "영향력 높은 선별 비평가",
+        "one_liner": "오랜 시간 게임을 즐겼지만, 개선점을 날카롭게 지적하며 더 나은 게임을 기대하는 베테랑 유저.",
+        "description": "이들은 게임에 대한 깊은 이해와 오랜 플레이 시간을 가진 베테랑 유저입니다. 게임을 추천하지만, 낮은 감성 점수와 높은 감정 강도는 게임의 특정 부분에 대한 강한 불만이나 개선 요구를 시사합니다. 이들의 의견은 커뮤니티에 큰 영향력을 미치며, 게임의 잠재력을 믿기에 비판적인 피드백을 아끼지 않습니다. 이들을 만족시키면 충성도 높은 지지자가 될 수 있지만, 불만이 쌓이면 이탈할 위험이 있습니다.",
+        "key_characteristics": [
+          "높은 총 플레이 시간과 꾸준한 활동",
+          "게임을 추천하지만, 낮은 감성 점수와 강한 감정 표현",
+          "커뮤니티 내 높은 영향력과 비판적 피드백 제공",
+          "게임의 잠재력을 믿고 개선을 요구",
+          "적극적인 바이럴 활동은 적음",
+          "특정 불만 해소 시 충성도 상승 가능성"
+        ],
+        "needs": [
+          "게임의 기본적인 안정성과 완성도 확보",
+          "핵심 기능 및 편의성 옵션(UI, 설정, 빠른 이동 등) 제공",
+          "버그 수정 및 게임 개선에 대한 개발사의 투명하고 신속한 대응",
+          "과도한 인게임 광고 없이 플레이 경험을 존중하는 운영"
+        ],
+        "pain_points": [
+          "미완성 상태로 출시된 게임과 지속적인 버그 및 튕김 현상",
+          "핵심적인 UI/UX 및 세부 설정, 기능 부재",
+          "버그 수정보다 배틀패스 광고 및 유저 편의 기능(봇방 언락) 패치에 집중하는 개발사의 태도",
+          "개발사에 대한 불신과 배신감"
+        ],
+        "target_priority": "높음",
+        "retention_risk": "중간",
+        "monetization_potential": "중간",
+        "recommended_actions": [
+          "핵심 버그 수정 및 게임 안정성 확보를 최우선 과제로 설정하고, 긴급 패치 로드맵을 투명하게 공개",
+          "누락된 핵심 기능(UI 개선, 세부 설정, 빠른 이동 등)을 빠르게 개발 및 업데이트하여 플레이 경험 개선",
+          "인게임 배틀패스 광고의 빈도와 노출을 재검토하고, 게임의 완성도가 확보될 때까지 자제",
+          "유저 피드백 채널을 활성화하고, 버그 수정 및 기능 개선 진행 상황을 정기적으로 소통하여 신뢰 회복"
+        ],
+        "evidence_refs": [
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "playtime",
+            "value": "213.7",
+            "segment_id": 6
+          },
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "sentiment_score",
+            "value": "0.0668789808917197",
+            "segment_id": 6
+          },
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "emotion_intensity",
+            "value": "4.089171974522293",
+            "segment_id": 6
+          },
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "vote_influence",
+            "value": "1.065072960992058",
+            "segment_id": 6
+          },
+          {
+            "evidence_type": "quote",
+            "source": "STEAM_representative_reviews.json",
+            "value": "이 개새끼들 이거 게임 다 만들지도 않고 출시함 쓰레기같은 UI 뭐 좀 할려고하면 튕기고 세부설정이 다 없어진 초기 월드 세팅 똑같이 없어진 빠른이동 전투 등 세부옵션 테스트 조금이라도 해보면 알 수 있는 문제가 있고 당연히 포함되어야하는 기능들이 없음",
+            "segment_id": 6
+          },
+          {
+            "evidence_type": "quote",
+            "source": "STEAM_representative_reviews.json",
+            "value": "출시 3주가 지날동안 온갖 잡 버그는 안 고치는데 800원 처 내고 산 게임 켤때마다 2800원짜리 배틀패스 사라고 광고 띄우는게임. 그러면서 유저들이 봇방에서 편하게 무기, 파츠 언락하니까 그건 또 꼬우셨는지 바로 패치함",
+            "segment_id": 6
+          },
+          {
+            "evidence_type": "chart",
+            "source": "STEAM_selected_images.txt",
+            "chart_name": "12_topdiff_mirror_segment_6.png",
+            "segment_id": 6
+          }
+        ]
+      }
+    },
+    {
+      "segment_id": 7,
+      "segment_size": 612,
+      "segment_ratio": "2.1%",
+      "persona_profile": {
+        "persona_name": "충성도 높은 몰입 비평가",
+        "one_liner": "게임의 핵심 플레이에 깊이 몰입하며, 조용히 오랜 시간 즐기는 충성도 높은 유저 그룹.",
+        "description": "이 유저들은 게임의 핵심 콘텐츠와 플레이 메커니즘에 깊이 몰입하여 매우 긴 플레이 시간을 기록합니다. 게임에 대한 만족도가 높아 다른 유저에게 추천하는 경향이 강하지만, 커뮤니티 활동이나 게임 외적인 문화적 요소에는 큰 관심을 보이지 않습니다. 조용히 게임 자체를 즐기며, 게임의 깊이와 반복 플레이 가치를 높게 평가하는 충성도 높은 그룹입니다. 이들은 게임의 새로운 콘텐츠나 시스템 업데이트에 민감하게 반응하며, 지속적인 플레이를 통해 게임의 진정한 가치를 경험합니다.",
+        "key_characteristics": [
+          "핵심 플레이에 대한 높은 몰입도",
+          "매우 긴 플레이 시간과 높은 활동성",
+          "게임에 대한 높은 만족도와 추천 의향",
+          "커뮤니티/문화 활동에 낮은 참여도",
+          "게임 외적 확산에 소극적",
+          "신규 콘텐츠 및 시스템 업데이트에 민감"
+        ],
+        "needs": [
+          "반복적인 플레이를 넘어선 다양하고 의미 있는 장기적인 콘텐츠 경험",
+          "더욱 몰입감 있고 보람 있는 전투 및 파밍 시스템",
+          "명확하고 만족스러운 성장 및 성취감 제공",
+          "주거지 건축 및 꾸미기, 스킨 커스터마이징 등 창의적 표현 요소 확장"
+        ],
+        "pain_points": [
+          "반복적인 파밍, 전투, 초기화로 인한 지루함과 피로감",
+          "전투의 재미 부족 및 목표 달성 시 성취감 결여",
+          "게임에 '인생을 갈아 넣어야' 할 정도의 과도한 시간 투자 요구",
+          "높은 플레이 시간에도 불구하고 느껴지는 콘텐츠의 단조로움"
+        ],
+        "target_priority": "높음",
+        "retention_risk": "낮음",
+        "monetization_potential": "높음",
+        "recommended_actions": [
+          "핵심 반복 콘텐츠(파밍, 전투, 초기화)에 새로운 변수, 전략적 깊이, 다양한 목표를 추가하여 지루함을 해소하고 몰입도를 높입니다",
+          "장기적인 플레이에 대한 보상 시스템을 재정비하여, 플레이어들이 시간 투자에 비례하는 명확하고 만족스러운 성취감을 느낄 수 있도록 합니다",
+          "주거지 건축, 꾸미기, 스킨 커스터마이징 등 긍정적으로 평가받는 창의적 요소를 확장하고, 이를 활용한 커뮤니티 활동을 장려합니다",
+          "이 세그먼트의 높은 플레이 타임과 비판적 피드백을 활용하여, 개발팀과의 직접적인 소통 채널(예: 심층 설문, 포커스 그룹)을 통해 구체적인 개선 방안을 모색합니다"
+        ],
+        "evidence_refs": [
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "recommended",
+            "value": "0.803921568627451",
+            "segment_id": 7
+          },
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "playtime",
+            "value": "774.825",
+            "segment_id": 7
+          },
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "playtime_last_two_weeks",
+            "value": "82.30000000000001",
+            "segment_id": 7
+          },
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "sentiment_score",
+            "value": "0.2647058823529412",
+            "segment_id": 7
+          },
+          {
+            "evidence_type": "metric",
+            "source": "STEAM_segment_summary.csv",
+            "key": "play_intensity",
+            "value": "0.7274228142944964",
+            "segment_id": 7
+          },
+          {
+            "evidence_type": "quote",
+            "source": "STEAM_representative_reviews.json",
+            "value": "시간이넘쳐나는분들만 이게임을 하세요 인생갈아넣으실거아니면 추천못하겟음 반복적인 파밍 반복적인 전투 반복적인 초기화 전투는 재미도없고 목표가있어도 성취감도없음 그냥키면졸립고 지루함 장점은 집건축하고 꾸미고 스킨부위별로 입힐수있는것빼곤 없음 나머진그냥 더볼필요도없음..",
+            "segment_id": 7
+          },
+          {
+            "evidence_type": "chart",
+            "source": "STEAM_selected_images.txt",
+            "chart_name": "07_radar_single.png",
+            "segment_id": 7
+          },
+          {
+            "evidence_type": "chart",
+            "source": "STEAM_selected_images.txt",
+            "chart_name": "12_topdiff_mirror_segment_7.png",
+            "segment_id": 7
+          }
+        ]
+      }
+    }
+  ],
+  "overall_insights": {
+    "key_findings": [
+      "Segment 0은 규모가 가장 큰 ‘휴면’ 성격의 집단이라, 재활성화만 성공해도 전체 지표에 영향이 큽니다",
+      "Segment 5/6처럼 ‘비판·불만’ 성격이 강한 집단은 규모가 크지 않아도 부정 확산 리스크가 있어 빠른 대응이 필요합니다",
+      "Segment 7은 장기 플레이·몰입도가 높은 핵심 충성층으로, 유지와 옹호자 육성이 효율적입니다",
+      "Segment 1은 만족도가 높은 ‘복귀 잠재’ 성격이라, 적절한 트리거(업데이트/신작/큐레이션) 제공 시 재활성화 기대가 큽니다",
+      "중간 규모 세그먼트(2~4)는 안정적 유지 전략과 개인화 추천 강화로 LTV를 키우기 좋습니다"
+    ],
+    "priority_segments": {
+      "impact_top": [
+        0,
+        7,
+        3,
+        6
+      ],
+      "urgency_top": [
+        3,
+        1,
+        6,
+        2
+      ]
+    },
+    "recommended_strategy": "우선순위를 2축으로 운영합니다.\n- Impact(규모/매출 잠재): [0, 7, 3, 6] 중심으로 ‘재활성화·개인화 추천·복귀 트리거’를 설계합니다.\n- Urgency(이탈/부정 확산): [3, 1, 6, 2] 중심으로 ‘불만 원인 파악·핵심 문제 해결·소통/피드백 루프’를 빠르게 돌립니다.\n특히 Segment 0은 대규모 휴면층이므로 ‘짧게 다시 시작’할 수 있는 경험(가벼운 복귀 동선, 업데이트 요약, 맞춤 추천)을 제공하고,\nSegment 5/6은 부정 감정이 커지기 전에 ‘문제 해결의 증거(패치/공지/진행상황)’를 보여주는 것이 중요합니다.",
+    "cross_segment_patterns": [
+      "규모가 큰 휴면층(0)은 ‘복귀 장벽(시간/동기/시작 부담)’을 낮추면 전환 효과가 큽니다",
+      "비판/불만 성격(5/6)은 ‘의견 반영’ 경험이 생기면 부정 확산을 줄이고 신뢰를 회복할 수 있습니다",
+      "장기 몰입층(7)은 ‘핵심 품질(버그/밸런스/콘텐츠)’에 민감하므로 운영 품질이 곧 리텐션입니다",
+      "조용하지만 꾸준한 층(2/4)은 ‘개인화 추천’과 ‘부담 없는 피드백’이 효과적입니다"
+    ],
+    "market_segmentation_summary": "시장 구조는 크게 ①대규모 휴면층(0) ②복귀 잠재의 고만족 휴식층(1) ③안정적 중간층(2\\~4) ④부정/비판 기반의 리스크 관리 대상(5\\~6) ⑤핵심 충성 몰입층(7)으로 나뉩니다. 따라서 ‘규모 기반 성장(Impact)’과 ‘리스크 기반 방어(Urgency)’를 동시에 운영하는 방식이 가장 효율적입니다."
+  }
+}

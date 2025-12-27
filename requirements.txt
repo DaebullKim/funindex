@@ -1,0 +1,10 @@
+streamlit
+pandas
+numpy
+google.generativeai
+cosine_similarity
+re
+json
+os
+time
+streamlit.components.v1

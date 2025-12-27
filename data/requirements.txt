@@ -1,0 +1,6 @@
+streamlit
+pandas
+numpy
+pyarrow
+python-dotenv
+google-genai
