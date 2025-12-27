@@ -1,10 +1,5 @@
 streamlit
 pandas
 numpy
-google.generativeai
-cosine_similarity
-re
-json
-os
-time
-streamlit.components.v1
+google-generativeai
+scikit-learn
