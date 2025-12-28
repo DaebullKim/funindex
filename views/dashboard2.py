@@ -1,7 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-st.title("📈 대시보드 2 (Tableau)")
+st.title("[KPI] STEAM 상위 랭킹")
 
 st.markdown("""
 <style>

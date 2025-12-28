@@ -1,7 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-st.title("📈 대시보드 1 (Tableau)")
+st.title("[랭킹] 유통 플랫폼")
 
 st.markdown("""
 <style>
