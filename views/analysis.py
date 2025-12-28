@@ -11,6 +11,14 @@ st.markdown("""
         width: 100%;
         border-radius: 8px;
         font-weight: bold;
+        
+        /* 👇 핵심: 텍스트 줄바꿈 허용 및 높이 고정 */
+        white-space: normal !important;  /* 텍스트 줄바꿈 */
+        height: auto !important;         /* 높이 자동 조절 */
+        min-height: 60px !important;     /* 최소 높이 확보 (줄바꿈 되어도 통일감) */
+        padding: 10px 5px !important;    /* 안쪽 여백 조절 */
+        line-height: 1.2 !important;     /* 줄간격 좁게 */
+        font-size: 14px !important;      /* 글자 크기 살짝 줄임 */
     }
     .persona-title {
         color: #FF4B4B;
@@ -79,22 +87,29 @@ if platform == "steam":
         "휴면 구매자", "장기 몰입형 휴식자", "조용한 꾸준 플레이어", "하드코어 몰입형 분석가",
         "간헐적 만족 플레이어", "구매 후 실망 이탈후보", "영향력 높은 선별 비평가", "충성도 높은 몰입 비평가"
     ]
+    rows = [st.columns(4), st.columns(4)]
 else: # YouTube
     seg_count = 6
     seg_names = [
         "수동적 세계관 여행자", "과몰입 서사 덕후", "엄경한 성능 감별사", 
         "소수 정예 길마", "진심 모드 장인", "조용한 충성 고수"
     ]
+    rows = [st.columns(6)]
 
 st.write("") 
 cols = st.columns(seg_count)
-for i in range(seg_count):
-    with cols[i]:
-        label = seg_names[i] if i < len(seg_names) else f"Seg {i}"
-        
+for i, name in enumerate(seg_names):
+    if platform == "steam":
+        row_idx = i // 4  # 0~3은 0번째 줄, 4~7은 1번째 줄
+        col_idx = i % 4
+    else:
+        row_idx = 0       # YouTube는 한 줄
+        col_idx = i
+
+    with rows[row_idx][col_idx]:
         btn_type = "primary" if current_seg == i else "secondary"
         
-        if st.button(label, key=f"seg_btn_{i}", type=btn_type, use_container_width=True):
+        if st.button(name, key=f"seg_btn_{i}", type=btn_type, use_container_width=True):
             st.session_state.an_selected_segment = i
             st.rerun()
 
