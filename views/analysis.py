@@ -12,7 +12,6 @@ st.markdown("""
         border-radius: 8px;
         font-weight: bold;
         
-        /* 👇 핵심: 텍스트 줄바꿈 허용 및 높이 고정 */
         white-space: normal !important;  /* 텍스트 줄바꿈 */
         min-height: 15px !important;     /* 최소 높이 확보 (줄바꿈 되어도 통일감) */
         padding: 5px 1px !important;    /* 안쪽 여백 조절 */
