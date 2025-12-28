@@ -14,9 +14,8 @@ st.markdown("""
         
         /* 👇 핵심: 텍스트 줄바꿈 허용 및 높이 고정 */
         white-space: normal !important;  /* 텍스트 줄바꿈 */
-        height: auto !important;         /* 높이 자동 조절 */
-        min-height: 60px !important;     /* 최소 높이 확보 (줄바꿈 되어도 통일감) */
-        padding: 10px 5px !important;    /* 안쪽 여백 조절 */
+        min-height: 15px !important;     /* 최소 높이 확보 (줄바꿈 되어도 통일감) */
+        padding: 5px 1px !important;    /* 안쪽 여백 조절 */
         line-height: 1.2 !important;     /* 줄간격 좁게 */
         font-size: 14px !important;      /* 글자 크기 살짝 줄임 */
     }
