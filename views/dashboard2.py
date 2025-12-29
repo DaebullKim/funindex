@@ -28,11 +28,17 @@ st.markdown("""
     border-left: 5px solid #ff4b4b;
     margin-bottom: 20px;
     font-size: 1rem;
-    color: #31333F;
+    color: #31333F !important;
 '>
     <span style='font-weight: bold;'>KPI 대시보드 활용 가이드</span><br>
     우측 랭킹 리스트에서 <b>게임명</b>이나 <b>아이콘</b>을 클릭하면 좌측의 상세 데이터가 해당 게임으로 변경됩니다.<br>
     선택한 게임의 <b>KPI 지표, CCU(동시접속자) 추이, 주제별 긍/부정 비율, 감정 키워드 워드클라우드</b>를 한눈에 확인할 수 있습니다.
+    <ul>
+        <li><b>KPI & CCU:</b> 핵심 성과 지표와 동시 접속자 추이를 통해 게임의 현재 흥행도를 진단합니다.</li>
+        <li><b>긍/부정 비율 & 워드클라우드:</b> 유저들의 <b>실제 여론</b>을 시각화하여, <br>
+            데이터 너머의 <b>구체적인 불만 요소</b>와 <b>핵심 칭찬 포인트</b>를 즉각적으로 파악하고 운영 전략에 반영할 수 있습니다.</li>
+    </ul>
+    우측 하단의 전체 화면에서 보기로 확대 가능.
 </div>
 """, unsafe_allow_html=True)
 
@@ -48,7 +54,7 @@ st.markdown(
             white-space: nowrap;     /* 4. [핵심] 절대 줄바꿈 하지 마라! (강제 명령) */
             margin-bottom: 0px;      /* 5. 아래 임베딩과 딱 붙게 하단 여백 제거 */
         '>
-            ☟하단 게임명 클릭시 변경
+            ☟하단 게임명 클릭 시 게임 변경
         </div>
         """, 
         unsafe_allow_html=True

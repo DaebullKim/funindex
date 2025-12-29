@@ -31,7 +31,8 @@ st.markdown("""
     이 대시보드는 <b>Steam</b>과 <b>Mobile</b> 플랫폼의 유통 랭킹을 시각화하여 보여줍니다.<br>
     상단의 탭을 전환하여 플랫폼별 데이터를 확인하고, 하단 리스트를 클릭하여 상세 정보를 확인하세요.<br>
     - 원본 점수 : 1위 100점 ~ 20위 5점<br>
-    - 점수 : 랭킹에 들어온 횟수 x 원본 점수
+    - 점수 : 랭킹에 들어온 횟수 x 원본 점수<br>
+    우측 하단의 전체 화면에서 보기로 확대 가능.
 </div>
 """, unsafe_allow_html=True)
 
@@ -48,7 +49,7 @@ st.markdown(
             white-space: nowrap;     
             margin-bottom: 0px;      
         '>
-            ☟하단 버튼 클릭시 변경☟
+            ☟하단 탭 클릭 시 랭킹, 플랫폼 변경☟
         </div>
         """, 
         unsafe_allow_html=True

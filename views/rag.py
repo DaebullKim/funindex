@@ -138,9 +138,18 @@ if st.session_state.gemini_api_key:
         genai.configure(api_key=st.session_state.gemini_api_key)
     except: pass
 
+# 키가 있으면 초록색 알림 & 제목 변경
+has_key = bool(st.session_state.gemini_api_key)
+expander_title = "✅ Google Gemini API Key 설정 완료" if has_key else "🔑 Google Gemini API Key 설정 (필수)"
+is_expanded = not has_key  # 키가 없으면 열어두고, 있으면 접어둠
+
+# 키가 등록되었을 때 상단에 초록색 바 표시
+if has_key:
+    st.success("API Key가 정상적으로 등록되었습니다. 분석 기능을 사용할 수 있습니다!", icon="✅")
+
 is_expanded = not bool(st.session_state.gemini_api_key)
 with st.expander("🔑 Google Gemini API Key 설정", expanded=is_expanded):
-    input_key = st.text_input("API Key 입력", type="password", value=st.session_state.gemini_api_key)
+    input_key = st.text_input("API Key 입력 (본 시스템은 API Key를 수집하지 않습니다.)", type="password", value=st.session_state.gemini_api_key)
     if st.button("API Key 적용"):
         st.session_state.gemini_api_key = input_key
         st.rerun()
