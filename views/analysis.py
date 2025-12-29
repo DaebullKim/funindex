@@ -32,6 +32,7 @@ st.markdown("""
         font-weight: 500;
         margin-bottom: 20px;
         line-height: 1.5;
+        color: #31333F !important;
     }
     .hashtag-badge {
         background-color: #fceceb;
