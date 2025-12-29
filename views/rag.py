@@ -95,13 +95,36 @@ class EmbeddingJobManager:
             self.is_running = False
 
 # 메모리에 저장
-@st.cache_resource
 def get_job_manager():
-    return EmbeddingJobManager()
+    if 'my_job_manager' not in st.session_state:
+        st.session_state.my_job_manager = EmbeddingJobManager()
+    return st.session_state.my_job_manager
 
 
 # 2. 기본 설정 및 데이터 로드
 st.title("[추천 시스템] LLM RAG")
+
+if 'rag_analysis_done' not in st.session_state:
+    st.session_state.rag_analysis_done = False
+    
+if not st.session_state.rag_analysis_done:
+    st.markdown("""
+    <div style='background-color: #f0f2f6; padding: 20px 25px; border-radius: 10px; border-left: 5px solid #ff4b4b; margin-bottom: 25px; font-size: 1rem; color: #31333F; line-height: 1.6;'>
+    <span style='font-weight: bold; font-size: 1.1rem;'>개발팀 역량 기반 게임 추천 가이드</span><br>
+    각 팀의 보유 역량을 <b>1점(낮음) ~ 5점(높음)</b>으로 평가하여 입력해 주세요.<br>
+    입력된 데이터를 바탕으로 우리 팀에 가장 적합한 <b>게임 장르</b>와 <b>유사 게임</b>을 추천해 드립니다.<br><br>
+<div style='background-color: white; padding: 15px; border-radius: 8px; border: 1px solid #ddd;'>
+    <b>🎨 아트팀:</b> 아트, 연출<br>
+    <b>📖 스토리팀:</b> 서사<br>
+    <b>📝 기획팀:</b> 시스템복잡도, 컨텐츠설계량<br>
+    <b>💻 클라이언트팀:</b> 엔진, 네트워크<br>
+    <b>🚀 운영팀:</b> 운영, BM<br>
+    <b>🎮 공통:</b> 조작감
+</div>
+    <br>
+    <b>설정 완료 후:</b> 사이드바의 <b style='color:#d93025'>'🚀 게임 추천 실행'</b> 버튼을 눌러주세요.
+</div>
+    """, unsafe_allow_html=True)
 
 # Job Manager 불러오기
 manager = get_job_manager()
@@ -185,10 +208,12 @@ with st.sidebar:
         input_vector.append((val - 1) / 4.0)
     
     st.divider()
-    run_btn = st.button("🚀 게임 추천 실행", type="primary", use_container_width=True)
+    if st.button("🚀 게임 추천 실행", type="primary", use_container_width=True):
+        st.session_state.rag_analysis_done = True # 상태 변경 (설명 사라짐)
+        st.rerun()
 
 # 5. 결과 화면
-if run_btn:
+if st.session_state.rag_analysis_done:
     st.divider()
     
     # 추천 로직
@@ -263,3 +288,7 @@ if run_btn:
                         st.write("관련 리뷰 없음")
                 else:
                     st.info("AI 분석 데이터가 아직 준비되지 않았습니다.")
+                    
+    if st.button("조건 변경 및 다시 검색"):
+        st.session_state.rag_analysis_done = False
+        st.rerun()
