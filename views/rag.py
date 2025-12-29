@@ -111,7 +111,7 @@ if not st.session_state.rag_analysis_done:
     st.markdown("""
     <div style='background-color: #f0f2f6; padding: 20px 25px; border-radius: 10px; border-left: 5px solid #ff4b4b; margin-bottom: 25px; font-size: 1rem; color: #31333F; line-height: 1.6;'>
     <span style='font-weight: bold; font-size: 1.1rem;'>개발팀 역량 기반 게임 추천 가이드</span><br>
-    각 팀의 보유 역량을 <b>1점(낮음) ~ 5점(높음)</b>으로 평가하여 입력해 주세요.<br>
+    각 팀의 보유 역량을 <b>1점(낮음) ~ 5점(높음)</b>으로 평가하여 <b>사이드바</b>에 입력해 주세요.<br>
     입력된 데이터를 바탕으로 우리 팀에 가장 적합한 <b>게임 장르</b>와 <b>유사 게임</b>을 추천해 드립니다.<br><br>
 <div style='background-color: white; padding: 15px; border-radius: 8px; border: 1px solid #ddd;'>
     <b>🎨 아트팀:</b> 아트, 연출<br>

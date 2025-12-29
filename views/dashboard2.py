@@ -8,28 +8,39 @@ import streamlit.components.v1 as components
 
 st.markdown("""
 <style>
-    /* 본문 영역(Main Container)의 여백을 0에 가깝게 줄임 */
     .block-container {
         padding-top: 5rem !important;
         padding-bottom: 0rem !important;
-        padding-left: 1rem !important;  /* 왼쪽 여백 축소 */
-        padding-right: 1rem !important; /* 오른쪽 여백 축소 */
-        max-width: 100% !important;     /* 전체 너비 사용 */
+        padding-left: 1rem !important;  
+        padding-right: 1rem !important; 
+        max-width: 100% !important;
     }
 </style>
 """, unsafe_allow_html=True)
 
-col_main, col_sub = st.columns([7, 3])
+st.title("[KPI] STEAM 상위 랭킹")
 
-with col_main:
-    st.title("[KPI] STEAM 상위 랭킹")
+st.markdown("""
+<div style='
+    background-color: #f0f2f6;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border-left: 5px solid #ff4b4b;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    color: #31333F;
+'>
+    <span style='font-weight: bold;'>KPI 대시보드 활용 가이드</span><br>
+    우측 랭킹 리스트에서 <b>게임명</b>이나 <b>아이콘</b>을 클릭하면 좌측의 상세 데이터가 해당 게임으로 변경됩니다.<br>
+    선택한 게임의 <b>KPI 지표, CCU(동시접속자) 추이, 주제별 긍/부정 비율, 감정 키워드 워드클라우드</b>를 한눈에 확인할 수 있습니다.
+</div>
+""", unsafe_allow_html=True)
 
-with col_sub:
-    st.markdown(
+st.markdown(
         """
         <div style='
             text-align: right; 
-            padding-top: 50px;       /* 1. 타이틀과 높이(Baseline) 맞추기 위해 살짝 늘림 */
+            padding-top: 0px;       /* 1. 타이틀과 높이(Baseline) 맞추기 위해 살짝 늘림 */
             padding-right: 10px;     /* 2. 불필요한 오른쪽 여백 축소 (40px -> 10px) */
             color: black; 
             font-size: 1.2rem;       /* 3. 글자 크기 축소 (2rem은 너무 큽니다 -> 1.2~1.5rem 추천) */
