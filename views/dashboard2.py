@@ -32,7 +32,7 @@ with col_sub:
             padding-top: 50px;       /* 1. 타이틀과 높이(Baseline) 맞추기 위해 살짝 늘림 */
             padding-right: 10px;     /* 2. 불필요한 오른쪽 여백 축소 (40px -> 10px) */
             color: black; 
-            font-size: 2.5rem;       /* 3. 글자 크기 축소 (2rem은 너무 큽니다 -> 1.2~1.5rem 추천) */
+            font-size: 1.2rem;       /* 3. 글자 크기 축소 (2rem은 너무 큽니다 -> 1.2~1.5rem 추천) */
             font-weight: bold;
             white-space: nowrap;     /* 4. [핵심] 절대 줄바꿈 하지 마라! (강제 명령) */
             margin-bottom: 0px;      /* 5. 아래 임베딩과 딱 붙게 하단 여백 제거 */
