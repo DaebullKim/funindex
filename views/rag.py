@@ -7,9 +7,8 @@ import re
 import threading
 import time
 
-# -----------------------------------------------------------------------------
-# 1. 백그라운드 작업 관리자 (Job Manager) - 핵심!
-# -----------------------------------------------------------------------------
+
+# 1. 백그라운드 작업 관리자
 class EmbeddingJobManager:
     def __init__(self):
         self.is_running = False      # 실행 중인지 여부
@@ -28,12 +27,12 @@ class EmbeddingJobManager:
         self.error_msg = None
         self.progress = 0.0
         
-        # 별도의 쓰레드(일꾼) 생성해서 보냄
+        # 쓰레드 생성
         thread = threading.Thread(target=self._run_embedding, args=(df_rag, api_key))
         thread.start()
 
     def _run_embedding(self, df_rag, api_key):
-        """실제 임베딩 작업 (백그라운드에서 실행됨)"""
+        """실제 백그라운드 임베딩 작업"""
         try:
             genai.configure(api_key=api_key)
             
@@ -95,14 +94,13 @@ class EmbeddingJobManager:
         finally:
             self.is_running = False
 
-# [중요] 이 관리자는 페이지를 이동해도 메모리에 살아있음 (@st.cache_resource)
+# 메모리에 저장
 @st.cache_resource
 def get_job_manager():
     return EmbeddingJobManager()
 
-# -----------------------------------------------------------------------------
+
 # 2. 기본 설정 및 데이터 로드
-# -----------------------------------------------------------------------------
 st.title("[추천 시스템] LLM RAG")
 
 # Job Manager 불러오기
@@ -143,16 +141,15 @@ def load_data():
 
 df_main, df_rag = load_data()
 
-# -----------------------------------------------------------------------------
+
 # 3. 임베딩 작업 실행 및 상태 모니터링 UI
-# -----------------------------------------------------------------------------
 if df_main is not None and st.session_state.gemini_api_key:
     # 1. 아직 시작 안 했고, 결과도 없으면 -> 시작
     if not manager.is_running and manager.doc_embeddings is None:
         manager.start_job(df_rag, st.session_state.gemini_api_key)
         st.rerun() # 시작했으니 화면 갱신
         
-    # 2. 실행 중이면 -> 진행률 표시 바 보여주기
+    # 2. 실행 중이면 진행률 표시 바
     elif manager.is_running:
         status_container = st.container(border=True)
         with status_container:
@@ -160,7 +157,7 @@ if df_main is not None and st.session_state.gemini_api_key:
             st.progress(manager.progress)
             st.caption("💡 팁: 이 작업은 백그라운드에서 계속됩니다. 다른 페이지를 다녀오셔도 됩니다!")
             
-            # 실시간 갱신을 위해 1초마다 리런 (페이지가 계속 깜빡일 수 있음)
+            # 실시간 갱신을 위해 1초마다 리런
             # 사용자가 보고 있을 때만 갱신
             time.sleep(1) 
             st.rerun()
@@ -169,14 +166,12 @@ if df_main is not None and st.session_state.gemini_api_key:
     elif manager.error_msg:
         st.error(f"🚨 {manager.error_msg}")
         if st.button("다시 시도"):
-            # 매니저 초기화 꼼수
+            # 매니저 초기화 꼼수 키키
             manager.doc_embeddings = None
             manager.error_msg = None
             st.rerun()
 
-# -----------------------------------------------------------------------------
 # 4. 분석 옵션 (사이드바)
-# -----------------------------------------------------------------------------
 if df_main is None: st.stop()
 
 with st.sidebar:
@@ -192,13 +187,11 @@ with st.sidebar:
     st.divider()
     run_btn = st.button("🚀 게임 추천 실행", type="primary", use_container_width=True)
 
-# -----------------------------------------------------------------------------
 # 5. 결과 화면
-# -----------------------------------------------------------------------------
 if run_btn:
     st.divider()
     
-    # 추천 로직 (기존과 동일)
+    # 추천 로직
     target_cols = dim_cols
     game_features = df_main[target_cols].values
     user_features = np.array(input_vector).reshape(1, -1)
@@ -220,7 +213,7 @@ if run_btn:
     st.divider()
     st.subheader("🧐 상세 근거 및 AI 분석")
 
-    # [수정] 매니저에서 결과 가져오기
+    # 매니저에서 결과 가져오기
     if not st.session_state.gemini_api_key:
         st.warning("⚠️ API Key가 없습니다.")
     elif manager.is_running:
