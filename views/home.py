@@ -5,32 +5,13 @@ import base64
 def render_clickable_image(image_path, caption, key_name):
     # 1. 현재 탭과 일치하는지 확인 (선택 여부)
     is_selected = (st.session_state.home_selected_tab == key_name)
+    # CSS 클래스 결정
+    class_name = "nav-card active" if is_selected else "nav-card"
     
-    # 2. 스타일 정의 (선택됨 vs 선택 안됨)
-    if is_selected:
-        # [선택됨] 빨간 테두리 + 선명하게 + 약간 확대 + 그림자
-        border_style = "4px solid #ff4b4b"
-        opacity = "1.0"
-        transform = "scale(1.05)"
-        box_shadow = "0px 4px 15px rgba(255, 75, 75, 0.4)"
-        filter_effect = "grayscale(0%)"
-        font_weight = "bold"
-        color = "#ff4b4b"
-    else:
-        # [선택 안됨] 투명 테두리 + 약간 흐리게 + 흑백 느낌
-        border_style = "4px solid transparent"
-        opacity = "0.6"
-        transform = "scale(1.0)"
-        box_shadow = "none"
-        filter_effect = "grayscale(80%)"
-        font_weight = "normal"
-        color = "#555"
-
-    # 3. 이미지 소스 처리 (URL vs 로컬 파일)
+    # 이미지 소스 처리
     if image_path.startswith("http"):
         img_src = image_path
     else:
-        # 로컬 파일이면 Base64로 인코딩해야 HTML에서 보임
         if os.path.exists(image_path):
             with open(image_path, "rb") as f:
                 data = f.read()
@@ -40,34 +21,25 @@ def render_clickable_image(image_path, caption, key_name):
             # 파일 없으면 플레이스홀더
             img_src = f"https://placehold.co/400x300/png?text={caption}"
 
-    # 4. HTML 생성
+    # HTML 생성
     html_code = f"""
-    <div style="text-align: center; transition: all 0.3s ease;">
-        <div style="
-            border: {border_style};
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            transform: {transform};
-            box-shadow: {box_shadow};
-            opacity: {opacity};
-            filter: {filter_effect};
-            margin-bottom: 10px;
-        ">
+    <div style="text-align: center; margin-bottom: 20px;">
+        <div class="{class_name}">
             <img src="{img_src}" style="width: 100%; display: block; object-fit: cover;">
         </div>
-        <div style="
-            font-size: 1rem; 
-            color: {color}; 
-            font-weight: {font_weight}; 
-            margin-top: 5px;
-            transition: all 0.3s ease;
-        ">
+        <div class="nav-text">
             {caption}
         </div>
     </div>
     """
     st.markdown(html_code, unsafe_allow_html=True)
+
+def get_img_path(filename):
+    path = os.path.join("data", "images", filename)
+    if os.path.exists(path):
+        return path
+    else:
+        return f"https://placehold.co/400x300/png?text={filename}"
 
 # 1. 초기 상태 설정 (현재 선택된 탭 관리)
 if "home_selected_tab" not in st.session_state:
@@ -80,6 +52,50 @@ def set_tab(tab_name):
 # 2. CSS 스타일링 (카드 디자인 및 버튼)
 st.markdown("""
 <style>
+    /* 네비게이션 이미지 카드 */
+    .nav-card {
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all 0.3s ease; /* 부드러운 전환 */
+        
+        /* 기본 상태: 어둡고, 흑백이고, 작음 */
+        border: 4px solid transparent;
+        opacity: 0.6;
+        filter: grayscale(100%);
+        transform: scale(1.0);
+    }
+
+    /* 마우스 Hover - 선택 안 된 것만 반응 */
+    .nav-card:not(.active):hover {
+        opacity: 0.85;           /* 조금 더 밝게 */
+        filter: grayscale(40%);  /* 색이 살짝 돔 */
+        transform: scale(1.02);  /* 살짝 커짐 */
+        cursor: pointer;
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* 선택된 상태 - 가장 밝고 큼 + 빨간 테두리 */
+    .nav-card.active {
+        opacity: 1.0;            /* 완전 선명 */
+        filter: grayscale(0%);   /* 완전 컬러 */
+        transform: scale(1.05);  /* 가장 큼 */
+        
+        border: 4px solid #ff4b4b;
+        box-shadow: 0px 4px 15px rgba(255, 75, 75, 0.4);
+    }
+
+    /* 텍스트 스타일 */
+    .nav-text {
+        text-align: center;
+        margin-top: 8px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        color: #777;
+    }
+    .nav-card.active + .nav-text { /* 이미지가 active일 때 형제 텍스트 */
+        color: #ff4b4b;
+        font-weight: bold;
+    }
     /* 설명 박스 스타일 (카드) */
     .info-card {
         background-color: #f8f9fa;
@@ -120,7 +136,7 @@ st.markdown('''
 ''', unsafe_allow_html=True)
 st.divider()
 
-# 3. 상단 이미지 영역 (4개)
+# 3. 상단 이미지 영역
 col_img1, col_img2, col_img3, col_img4 = st.columns(4)
 
 img_files = {

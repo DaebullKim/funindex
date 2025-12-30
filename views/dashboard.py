@@ -3,17 +3,15 @@ import streamlit.components.v1 as components
 
 st.markdown("""
 <style>
-    /* 본문 영역(Main Container)의 여백을 0에 가깝게 줄임 */
     .block-container {
         padding-top: 5rem !important;
         padding-bottom: 0rem !important;
-        padding-left: 1rem !important;  /* 왼쪽 여백 축소 */
-        padding-right: 1rem !important; /* 오른쪽 여백 축소 */
-        max-width: 100% !important;     /* 전체 너비 사용 */
+        padding-left: 1rem !important;  
+        padding-right: 1rem !important; 
+        max-width: 100% !important;
     }
 </style>
 """, unsafe_allow_html=True)
-
 
 st.title("[랭킹] 유통 플랫폼")
     
@@ -30,9 +28,11 @@ st.markdown("""
     <span style='font-weight: bold;'>대시보드 활용 가이드</span><br>
     이 대시보드는 <b>Steam</b>과 <b>Mobile</b> 플랫폼의 유통 랭킹을 시각화하여 보여줍니다.<br>
     상단의 탭을 전환하여 플랫폼별 데이터를 확인하고, 하단 리스트를 클릭하여 상세 정보를 확인하세요.<br>
-    - 원본 점수 : 1위 100점 ~ 20위 5점<br>
-    - 점수 : 랭킹에 들어온 횟수 x 원본 점수<br>
-    우측 하단의 전체 화면에서 보기로 확대 가능.
+    <ul>
+        <li>원본 점수 : 1위 100점 ~ 20위 5점<br></li>
+        <li><b>점수 : 랭킹에 들어온 횟수 x 원본 점수 <br></li>
+    </ul>
+    <span style='font-size: 0.9rem; color: #555;'>대시보드 우측 하단의 <전체 화면에서 보기>로 확대 보기 가능.</span>
 </div>
 """, unsafe_allow_html=True)
 

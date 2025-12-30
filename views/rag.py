@@ -154,6 +154,64 @@ with st.expander("🔑 Google Gemini API Key 설정", expanded=is_expanded):
         st.session_state.gemini_api_key = input_key
         st.rerun()
 
+if not st.session_state.rag_analysis_done:
+    st.divider()
+    st.subheader("👀 분석 결과 예시 (Preview)")
+    st.caption("※ 모든 역량을 '보통(3점)'으로 설정했을 때의 예시 화면입니다. 실제 실행 시 AI가 실시간으로 분석합니다.")
+
+    # 1. 예시 요약 테이블
+    ex_c1, ex_c2 = st.columns([1, 2])
+    with ex_c1:
+        st.markdown("**📌 추천 장르 Top 2**")
+        st.dataframe(pd.DataFrame({
+            "Genre": ["Adventure", "Simulation"],
+            "Count": [3, 2]
+        }), use_container_width=True, hide_index=True)
+    with ex_c2:
+        st.markdown("**🏆 추천 게임 Top 5**")
+        st.dataframe(pd.DataFrame({
+            "APPID": ["12345", "67890", "11223", "44556", "99887"],
+            "game_name": ["Dave the Diver", "Stardew Valley", "Subnautica", "Terraria", "Factorio"],
+            "match_score": ["0.9852", "0.9710", "0.9540", "0.9320", "0.9105"]
+        }), use_container_width=True, hide_index=True)
+
+    st.write("") # 여백
+
+    # 2. 예시 상세 카드 (실제 결과와 동일한 디자인)
+    st.subheader("🧐 상세 근거 및 AI 분석 (예시)")
+    
+    # 가짜 데이터로 카드 하나만 렌더링
+    with st.container(border=True):
+        st.markdown("### 1. Dave the Diver <small>(유사도: 0.985)</small>", unsafe_allow_html=True)
+        col_ex_spec, col_ex_rag = st.columns([1, 1])
+        
+        with col_ex_spec:
+            st.caption("🛠️ 기술 스펙 (D7~D10)")
+            # 정적 테이블 생성
+            st.table(pd.DataFrame([{
+                "engine": "Unity",
+                "network": "Single-player",
+                "update": "High",
+                "business_model": "Package"
+            }]))
+
+        with col_ex_rag:
+            st.caption("💬 유저 반응 분석 (RAG)")
+            # AI 분석 결과인 척하는 하드코딩 텍스트
+            st.info("**팀 선호 요소(시스템복잡도) 관련 리뷰:**")
+            st.markdown("> *\"이 게임은 경영 시뮬레이션과 해양 탐험 액션이 절묘하게 조화되어 있습니다. 시스템이 깊이 있으면서도 튜토리얼이 친절해 복잡하게 느껴지지 않는 점이 최고입니다.\"*")
+            st.caption("(관련성: 0.8912)")
+
+    # 흐릿하게 처리해서 '예시임'을 강조하고 싶다면 아래 CSS 추가 (선택사항)
+    st.markdown("""
+    <style>
+        /* 예시 화면에 약간의 투명도 주기 */
+        div[data-testid="stVerticalBlock"] > div:has(div.stMarkdown) {
+            transition: opacity 0.5s;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+
 # 데이터 로드
 @st.cache_data
 def load_data():
