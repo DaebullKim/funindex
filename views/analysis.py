@@ -78,6 +78,22 @@ st.markdown("""
 
 st.title("[고객 유형] 세그먼트 분석")
 
+st.markdown("""
+<div style='
+    background-color: #f0f2f6;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border-left: 5px solid #ff4b4b;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    color: #31333F; 
+    line-height: 1.6;
+'>
+    <span style='font-weight: bold;'>💡 고객 세그먼트 분석 가이드</span><br>
+    유저들의 행동 데이터를 기반으로 분류된 <b>8가지 세그먼트</b>를 심층 분석합니다.<br>
+    상단의 탭을 선택하여 각 그룹별 <b>성향, 니즈, 페인포인트</b>를 파악하고 맞춤형 운영 전략을 수립하세요.
+</div>
+""", unsafe_allow_html=True)
 
 # 2. 유틸리티 함수
 def load_json(path):
