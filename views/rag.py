@@ -7,8 +7,9 @@ import re
 import threading
 import time
 
-
-# 1. 백그라운드 작업 관리자
+# -----------------------------------------------------------------------------
+# 1. 백그라운드 작업 관리자 (Job Manager)
+# -----------------------------------------------------------------------------
 class EmbeddingJobManager:
     def __init__(self):
         self.is_running = False      # 실행 중인지 여부
@@ -20,8 +21,8 @@ class EmbeddingJobManager:
 
     def start_job(self, df_rag, api_key):
         """백그라운드 쓰레드 시작"""
-        if self.is_running: return # 이미 돌고 있으면 패스
-        if self.doc_embeddings is not None: return # 이미 결과 있으면 패스
+        if self.is_running: return 
+        if self.doc_embeddings is not None: return 
         
         self.is_running = True
         self.error_msg = None
@@ -76,7 +77,6 @@ class EmbeddingJobManager:
                     result = genai.embed_content(model=model, content=batch)
                     embeddings.extend(result['embedding'])
                 except Exception as e:
-                    # API 에러 발생 시 잠시 대기 후 재시도 혹은 에러 처리
                     print(f"Error: {e}")
                     time.sleep(1)
                 
@@ -94,23 +94,27 @@ class EmbeddingJobManager:
         finally:
             self.is_running = False
 
-# 메모리에 저장
+# 메모리에 저장 (세션 스테이트 사용)
 def get_job_manager():
     if 'my_job_manager' not in st.session_state:
         st.session_state.my_job_manager = EmbeddingJobManager()
     return st.session_state.my_job_manager
 
 
+# -----------------------------------------------------------------------------
 # 2. 기본 설정 및 데이터 로드
+# -----------------------------------------------------------------------------
 st.title("[추천 시스템] LLM RAG")
 
+# 상태 초기화
 if 'rag_analysis_done' not in st.session_state:
     st.session_state.rag_analysis_done = False
-    
+
+# [설명 카드] 실행 전(False)일 때만 표시
 if not st.session_state.rag_analysis_done:
     st.markdown("""
     <div style='background-color: #f0f2f6; padding: 20px 25px; border-radius: 10px; border-left: 5px solid #ff4b4b; margin-bottom: 25px; font-size: 1rem; color: #31333F; line-height: 1.6;'>
-    <span style='font-weight: bold; font-size: 1.1rem;'>개발팀 역량 기반 게임 추천 가이드</span><br>
+    <span style='font-weight: bold; font-size: 1.1rem;'>💡 개발팀 역량 기반 게임 추천 가이드</span><br>
     각 팀의 보유 역량을 <b>1점(낮음) ~ 5점(높음)</b>으로 평가하여 <b>사이드바</b>에 입력해 주세요.<br>
     입력된 데이터를 바탕으로 우리 팀에 가장 적합한 <b>게임 장르</b>와 <b>유사 게임</b>을 추천해 드립니다.<br><br>
 <div style='background-color: white; padding: 15px; border-radius: 8px; border: 1px solid #ddd;'>
@@ -122,14 +126,14 @@ if not st.session_state.rag_analysis_done:
     <b>🎮 공통:</b> 조작감
 </div>
     <br>
-    <b>설정 완료 후:</b> 사이드바의 <b style='color:#d93025'>'🚀 게임 추천 실행'</b> 버튼을 눌러주세요.
+    👉 <b>설정 완료 후:</b> 사이드바의 <b style='color:#d93025'>'🚀 게임 추천 실행'</b> 버튼을 눌러주세요.
 </div>
     """, unsafe_allow_html=True)
 
 # Job Manager 불러오기
 manager = get_job_manager()
 
-# API Key 설정
+# API Key 설정 UI
 if "gemini_api_key" not in st.session_state:
     st.session_state.gemini_api_key = ""
 
@@ -138,26 +142,50 @@ if st.session_state.gemini_api_key:
         genai.configure(api_key=st.session_state.gemini_api_key)
     except: pass
 
-# 키가 있으면 초록색 알림 & 제목 변경
 has_key = bool(st.session_state.gemini_api_key)
 expander_title = "✅ Google Gemini API Key 설정 완료" if has_key else "🔑 Google Gemini API Key 설정 (필수)"
-is_expanded = not has_key  # 키가 없으면 열어두고, 있으면 접어둠
+is_expanded = not has_key 
 
-# 키가 등록되었을 때 상단에 초록색 바 표시
 if has_key:
     st.success("API Key가 정상적으로 등록되었습니다. 분석 기능을 사용할 수 있습니다!", icon="✅")
 
-is_expanded = not bool(st.session_state.gemini_api_key)
-with st.expander("🔑 Google Gemini API Key 설정", expanded=is_expanded):
+with st.expander(expander_title, expanded=is_expanded):
     input_key = st.text_input("API Key 입력 (본 시스템은 API Key를 수집하지 않습니다.)", type="password", value=st.session_state.gemini_api_key)
     if st.button("API Key 적용"):
         st.session_state.gemini_api_key = input_key
         st.rerun()
 
+# -----------------------------------------------------------------------------
+# [위치 이동] 3. 임베딩 작업 상태 모니터링 UI
+# (예시 화면보다 먼저 나와야 하므로 위로 올렸습니다)
+# -----------------------------------------------------------------------------
+if manager.is_running:
+    st.write("") # 약간의 여백
+    status_container = st.container(border=True)
+    with status_container:
+        st.info(f"🔄 {manager.status_text}")
+        st.progress(manager.progress)
+        st.caption("💡 팁: 이 작업은 백그라운드에서 계속됩니다. 다른 페이지를 다녀오셔도 됩니다!")
+        
+        # 실시간 갱신을 위해 1초마다 리런
+        time.sleep(1) 
+        st.rerun()
+        
+elif manager.error_msg:
+    st.error(f"🚨 {manager.error_msg}")
+    if st.button("다시 시도"):
+        manager.doc_embeddings = None
+        manager.error_msg = None
+        st.rerun()
+
+# -----------------------------------------------------------------------------
+# 4. 분석 결과 예시 화면 (Preview)
+# 조건: 아직 분석이 실행되지 않았을 때(False)만 보여줌
+# -----------------------------------------------------------------------------
 if not st.session_state.rag_analysis_done:
     st.divider()
     st.subheader("👀 분석 결과 예시 (Preview)")
-    st.caption("※ 모든 역량을 '보통(3점)'으로 설정했을 때의 예시 화면입니다. 실제 실행 시 AI가 실시간으로 분석합니다.")
+    st.caption("※ 모든 역량을 '보통(3점)'으로 설정했을 때의 예시 화면입니다. 실제 실행 시 AI가 사용자의 설정을 바탕으로 실시간 분석합니다.")
 
     # 1. 예시 요약 테이블
     ex_c1, ex_c2 = st.columns([1, 2])
@@ -177,17 +205,15 @@ if not st.session_state.rag_analysis_done:
 
     st.write("") # 여백
 
-    # 2. 예시 상세 카드 (실제 결과와 동일한 디자인)
+    # 2. 예시 상세 카드
     st.subheader("🧐 상세 근거 및 AI 분석 (예시)")
     
-    # 가짜 데이터로 카드 하나만 렌더링
     with st.container(border=True):
         st.markdown("### 1. Dave the Diver <small>(유사도: 0.985)</small>", unsafe_allow_html=True)
         col_ex_spec, col_ex_rag = st.columns([1, 1])
         
         with col_ex_spec:
             st.caption("🛠️ 기술 스펙 (D7~D10)")
-            # 정적 테이블 생성
             st.table(pd.DataFrame([{
                 "engine": "Unity",
                 "network": "Single-player",
@@ -197,22 +223,14 @@ if not st.session_state.rag_analysis_done:
 
         with col_ex_rag:
             st.caption("💬 유저 반응 분석 (RAG)")
-            # AI 분석 결과인 척하는 하드코딩 텍스트
             st.info("**팀 선호 요소(시스템복잡도) 관련 리뷰:**")
             st.markdown("> *\"이 게임은 경영 시뮬레이션과 해양 탐험 액션이 절묘하게 조화되어 있습니다. 시스템이 깊이 있으면서도 튜토리얼이 친절해 복잡하게 느껴지지 않는 점이 최고입니다.\"*")
             st.caption("(관련성: 0.8912)")
 
-    # 흐릿하게 처리해서 '예시임'을 강조하고 싶다면 아래 CSS 추가 (선택사항)
-    st.markdown("""
-    <style>
-        /* 예시 화면에 약간의 투명도 주기 */
-        div[data-testid="stVerticalBlock"] > div:has(div.stMarkdown) {
-            transition: opacity 0.5s;
-        }
-    </style>
-    """, unsafe_allow_html=True)
 
-# 데이터 로드
+# -----------------------------------------------------------------------------
+# 5. 데이터 로드 및 임베딩 자동 시작 로직
+# -----------------------------------------------------------------------------
 @st.cache_data
 def load_data():
     try:
@@ -231,55 +249,36 @@ def load_data():
 
 df_main, df_rag = load_data()
 
-
-# 3. 임베딩 작업 실행 및 상태 모니터링 UI
+# [자동 시작] 데이터 있고 + 키 있고 + 아직 안 돌렸으면 -> start_job 호출
 if df_main is not None and st.session_state.gemini_api_key:
-    # 1. 아직 시작 안 했고, 결과도 없으면 -> 시작
     if not manager.is_running and manager.doc_embeddings is None:
         manager.start_job(df_rag, st.session_state.gemini_api_key)
-        st.rerun() # 시작했으니 화면 갱신
-        
-    # 2. 실행 중이면 진행률 표시 바
-    elif manager.is_running:
-        status_container = st.container(border=True)
-        with status_container:
-            st.info(f"🔄 {manager.status_text}")
-            st.progress(manager.progress)
-            st.caption("💡 팁: 이 작업은 백그라운드에서 계속됩니다. 다른 페이지를 다녀오셔도 됩니다!")
-            
-            # 실시간 갱신을 위해 1초마다 리런
-            # 사용자가 보고 있을 때만 갱신
-            time.sleep(1) 
-            st.rerun()
-            
-    # 3. 에러 났으면
-    elif manager.error_msg:
-        st.error(f"🚨 {manager.error_msg}")
-        if st.button("다시 시도"):
-            # 매니저 초기화 꼼수 키키
-            manager.doc_embeddings = None
-            manager.error_msg = None
-            st.rerun()
+        st.rerun()
 
-# 4. 분석 옵션 (사이드바)
+
+# -----------------------------------------------------------------------------
+# 6. 분석 옵션 (사이드바)
+# -----------------------------------------------------------------------------
 if df_main is None: st.stop()
 
 with st.sidebar:
     st.header("🎛️ 분석 옵션")
     input_vector = []
     dim_cols = ["아트", "연출", "서사", "조작감", "시스템복잡도", "컨텐츠설계량", "엔진", "네트워크", "운영", "BM"]
-    dim_map = {"아트": "D01", "연출": "D02", "서사": "D03", "조작감": "D04", "시스템복잡도": "D05", "컨텐츠설계량": "D06", "엔진": "D07", "네트워크": "D08", "운영": "D09", "BM": "D10"}
     
     for col_name in dim_cols:
         val = st.slider(col_name, 1, 5, 3)
         input_vector.append((val - 1) / 4.0)
     
     st.divider()
+    # 버튼 클릭 시 상태 변경 -> 예시 화면 사라짐 + 결과 화면 등장
     if st.button("🚀 게임 추천 실행", type="primary", use_container_width=True):
-        st.session_state.rag_analysis_done = True # 상태 변경 (설명 사라짐)
+        st.session_state.rag_analysis_done = True 
         st.rerun()
 
-# 5. 결과 화면
+# -----------------------------------------------------------------------------
+# 7. 결과 화면 (실제 분석 결과)
+# -----------------------------------------------------------------------------
 if st.session_state.rag_analysis_done:
     st.divider()
     
@@ -305,7 +304,7 @@ if st.session_state.rag_analysis_done:
     st.divider()
     st.subheader("🧐 상세 근거 및 AI 분석")
 
-    # 매니저에서 결과 가져오기
+    # 매니저 상태 체크 (결과 화면에서도 진행 중일 수 있으므로)
     if not st.session_state.gemini_api_key:
         st.warning("⚠️ API Key가 없습니다.")
     elif manager.is_running:
@@ -331,7 +330,6 @@ if st.session_state.rag_analysis_done:
 
             with col_rag:
                 st.caption("💬 유저 반응 분석 (RAG)")
-                # 매니저의 결과 데이터 사용
                 if manager.doc_embeddings is not None and manager.df_docs is not None:
                     game_indices = manager.df_docs[manager.df_docs['APPID'] == appid].index.tolist()
                     if game_indices:
@@ -356,6 +354,7 @@ if st.session_state.rag_analysis_done:
                 else:
                     st.info("AI 분석 데이터가 아직 준비되지 않았습니다.")
                     
-    if st.button("조건 변경 및 다시 검색"):
+    # [팁] 결과를 보고 다시 처음으로 돌아가고 싶다면?
+    if st.button("🔄 조건 변경 및 다시 검색"):
         st.session_state.rag_analysis_done = False
         st.rerun()
